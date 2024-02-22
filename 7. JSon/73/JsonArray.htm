@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+
+    <script>
+        var products = [
+            {
+                code: "sp1",
+                name: "Cocacola",
+                price: 15000
+            },
+            {
+                code: "sp2",
+                name: "Pepsi",
+                price: 25000
+            },
+            {
+                code: "sp3",
+                name: "Sting",
+                price: 17000
+            }
+            // Add more products as needed
+        ];
+
+        function populateTable() {
+            var tableBody = document.getElementById("productTableBody");
+
+            for (var i = 0; i < products.length; i++) {
+                var product = products[i];
+                var row = tableBody.insertRow();
+                var cellCode = row.insertCell(0);
+                var cellName = row.insertCell(1);
+                var cellPrice = row.insertCell(2);
+
+                cellCode.innerHTML = '<span style="color: red;">' + product.code + '</span>';
+                cellName.innerHTML = '<span style="color: red;">' + product.name + '</span>';
+                cellPrice.innerHTML = product.price;
+            }
+        }
+    </script>
+</head>
+<body>
+    <table border="1" style="border-collapse: collapse;width: 100%;">
+        <thead>
+            <tr bgColor="green" style="color: aliceblue;">
+                <th>Code</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody id="productTableBody">
+        </tbody>
+    </table>
+
+    <script>
+        // Gọi hàm populateTable khi trang đã tải
+        window.onload = function() {
+            populateTable();
+        };
+    </script>
+</body>
+</html>

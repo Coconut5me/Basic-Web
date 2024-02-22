@@ -1,0 +1,55 @@
+<html>
+    <head>
+        
+        <script type="text/javascript">
+            function giaiptb1(){
+                //alert("chien")
+                //alert(myform.a.value)
+                a=eval(myform.a.value)
+                b=eval(myform.b.value)
+                ketqua=document.getElementById("result")
+                if(a==0 && b==0)
+                {
+                    ketqua.innerHTML="Tùm lum nghiệm"
+                }
+                else if(a==0&&b!=0)
+                {
+                    ketqua.innerHTML="Vô nghiệm"
+                }
+                else
+                {
+                    ketqua.innerHTML=-b*1.0/a
+                }    
+            }
+        </script>
+    </head>
+    <body>
+        <form name="myform">
+            <table>
+                <tr>
+                    <td colspan="2">PTB1</td>
+                </tr>
+                <tr>
+                    <td>Hệ số a: </td>
+                    <td><input type="number" id="a" name="a"></td>
+                </tr>
+                <tr>
+                    <td>Hệ số b: </td>
+                    <td><input type="number" id="b" name="b"></td>
+                </tr>
+                <tr>
+                    <td>Kết quả: </td>
+                    <td id="result"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="button" value="Giải" onclick="giaiptb1()">
+                        <input type="reset" vlaue="Pt mới">
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+    </body>
+</html>

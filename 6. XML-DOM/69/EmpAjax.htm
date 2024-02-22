@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+    </style>
+    <script>
+        function loadData() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "Emp.xml", true);
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var xmlDoc = xhr.responseXML;
+                    var employees = xmlDoc.getElementsByTagName("employee");
+                    var tbody = document.querySelector("tbody");
+
+                    // Clear the existing table data
+                    tbody.innerHTML = "";
+
+                    for (var i = 0; i < employees.length; i++) {
+                        var empTitle = employees[i].getAttribute("value");
+                        var empId = employees[i].getAttribute("id");
+                        var empName = employees[i].getElementsByTagName("empName")[0].textContent;
+                        var phone = employees[i].getElementsByTagName("phone")[0].textContent;
+
+                        // Create a new row in the table and populate it with employee data
+                        var row = tbody.insertRow();
+                        var cell1 = row.insertCell(0);
+                        var cell2 = row.insertCell(1);
+                        var cell3 = row.insertCell(2);
+
+                        cell1.textContent = empId;
+                        cell2.textContent = empName;
+                        cell3.textContent = phone;
+                        row.setAttribute("data-title", empTitle);
+                    }
+                }
+            }
+        }
+
+        function sortTitle(selectedTitle) {
+            var employees = document.querySelectorAll("tbody tr");
+
+            for (var i = 0; i < employees.length; i++) {
+                var empTitle = employees[i].getAttribute("data-title");
+
+                if (selectedTitle === "All" || empTitle === selectedTitle) {
+                    employees[i].style.display = "";
+                } else {
+                    employees[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <form>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <td colspan="2">
+                    <select name="title" id="title" onchange="sortTitle(this.value)">
+                        <option value="All">All</option>
+                        <option value="Architect">Architect</option>
+                        <option value="Engineer">Engineer</option>
+                        <option value="Teacher">Teacher</option>
+                    </select>
+                </td>
+            </tr>
+            <tr bgColor="green" style="color: aliceblue;">
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</form>
+    <script>
+        loadData();
+    </script>
+</body>
+</html>

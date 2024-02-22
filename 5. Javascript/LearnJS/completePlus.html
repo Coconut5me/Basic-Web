@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript">
+        function doSum(a, b, c)
+        {
+            document.getElementById("idresult").innerHTML=(eval(a)+eval(b)+eval(c))
+        }
+    </script>
+
+</head>
+<body>
+    Input a: <input type="number" id="ida" /><br/>
+    Input b: <input type="number" id="idb"/><br />
+    Input c: <input type="number" id="idc"/><br />
+    <input type="button" value="Compute +" 
+           onclick="doSum(ida.value, idb.value,idc.value)"/><br />
+    Result: <label id="idresult" ></label>
+</body>
+</html>

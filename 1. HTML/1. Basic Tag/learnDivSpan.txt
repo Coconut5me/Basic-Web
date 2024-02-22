@@ -1,0 +1,15 @@
+<html>
+	<head></head>
+	<body>
+		<div style="backgound-color:yellow">
+			Hello
+		</div>
+		<span style="backgound-color:yellow">
+		</span>
+		<span style="backgound-color:green">
+		</span>
+		<div style="backgound-color:magenta">
+			Hello
+		</div>
+	</body>
+</html>

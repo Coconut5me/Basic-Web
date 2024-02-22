@@ -1,0 +1,22 @@
+<employees>
+  <employee id="1" value="Architect">
+    <empName>John</empName>
+    <phone>0974123214</phone>
+  </employee>
+  <employee id="2" value="Engineer">
+    <empName>Peter</empName>
+    <phone>0987456689</phone>
+  </employee>
+  <employee id="3" value="Teacher">
+    <empName>Cayse</empName>
+    <phone>0916563214</phone>
+  </employee>
+  <employee id="4" value="Architect">
+    <empName>Tom</empName>
+    <phone>0967854123</phone>
+  </employee>
+  <employee id="5" value="Engineer">
+    <empName>Daisy</empName>
+    <phone>09678541123</phone>
+  </employee>
+</employees>

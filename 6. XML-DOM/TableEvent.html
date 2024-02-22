@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function changeBackgroundOver(obj) 
+        {
+            obj.style.backgroundColor = 'blue';
+        }
+        function changeBackgroundOut(teo)
+        {
+            teo.style.backgroundColor = 'yellow';
+        }
+    </script>
+</head>
+
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product ID</th>
+                <th>Unique Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background-color: yellow;" 
+                onmouseover="changeBackgroundOver(this)"
+                onmouseover="changeBackgroundOut(this)">
+                <td>P-1</td>
+                <td>Coca</td>
+                <td>15$</td>
+            </tr>
+            <tr>
+                <td>P-2</td>
+                <td>Pepsi</td>
+                <td>25$</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

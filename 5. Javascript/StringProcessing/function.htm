@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function showStudentInfo()
+        {
+            document.getElementById("tdname").innerHTML=studentName
+            document.getElementById("tdemail").innerHTML=studentEmail
+        }
+    </script>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td>Student ID:</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Student Name:</td>
+            <td id="tdname"></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td id="tdemail"></td>
+        </tr>
+    </table>
+    <script>
+        showStudentInfo()
+    </script>
+</body>
+</html>

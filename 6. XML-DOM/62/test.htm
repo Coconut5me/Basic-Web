@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        body {
+            font-family: arial;
+        }
+        .whitetext {
+            height: 30px;
+            color: aliceblue;
+            font-weight: bold;
+        }
+        thead {
+            background-color: rgb(56, 56, 119);
+            color: aliceblue;
+        }
+        tbody tr:nth-child(odd) {
+            background-color: rgb(255, 255, 227);
+        }
+        tbody tr:nth-child(even) {
+            background-color: white;
+        }
+        tfoot {
+            background-color: rgb(34, 34, 119);
+            color: aliceblue;
+        }
+    </style>
+    <script>
+        dataset = new Array(3);
+        dataset[0] = "1;123456;Albert Einstein";
+        dataset[1] = "2;321232;Niels Bohr";
+        dataset[2] = "3;987544;Stephen Hawking";
+        dataset[3] = "4;359687;Isaac Newton";
+        dataset[4] = "5;574878;Nikola Tesla";
+    </script>
+    <script>
+        function drawStudentData() {
+            tableBody = document.getElementById("tableBody");
+            for (i = 0; i < dataset.length; i++) {
+                item = dataset[i];
+                arr = item.split(";");
+                tr = "<tr onmouseover='highlightRow(this)' onmouseout='unhighlightRow(this)'>";
+                tr += "<td>" + arr[0] + "</td>";
+                tr += "<td>" + arr[1] + "</td>";
+                tr += "<td>" + arr[2] + "</td>";
+                tr += "</tr>";
+                tableBody.innerHTML += tr;
+            }
+        }
+
+        function highlightRow(row) {
+            row.style.backgroundColor = "lightblue";
+        }
+
+        function unhighlightRow(row) {
+            // Restore the row's original background color
+            var rowIndex = row.rowIndex;
+            row.style.backgroundColor = rowIndex % 2 === 0 ? "white" : "rgb(255, 255, 227)";
+        }
+    </script>
+</head>
+<body>
+    <table border="1" style="border-collapse: collapse;width: 100%">
+        <thead>
+            <th>#</th>
+            <th>Student ID</th>
+            <th>Student Name</th>
+        </thead>
+        <tbody id="tableBody"></tbody>
+        <tfoot>
+            <td colspan="3">Designed by John</td>
+        </tfoot>
+    </table>
+    <script>
+        drawStudentData();
+    </script>
+</body>
+</html>

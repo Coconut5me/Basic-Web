@@ -1,0 +1,11 @@
+<<html>
+	<head>
+		<title>Joe Biden visited Vietnam</title>
+	<head>
+	<body>
+		<h1 style="color:red"> Heading of H1 </h1>
+		<p style="text-align:justify">
+			Đây sẽ là chuyến thăm Việt Nam đầu tiên của Tổng thống Biden kể từ khi ông nhậm chức đầu năm 2021. Sự kiện diễn ra vào dịp hai nước kỷ niệm 10 năm thiết lập quan hệ Đối tác toàn diện.
+		</p>
+	</body>
+</html>

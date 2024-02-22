@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .highlighted {
+            background-color: blue;
+            color: white;
+        }
+        table {
+            width: 50%;
+            border-collapse: collapse;            
+        }
+        td {
+            text-align: center;
+        }
+    </style>
+    <script>
+        var txt = "<student>";
+        txt += "<id>987561</id>";
+        txt += "<name> Einstein </name>";
+        txt += "<birthday>14/3/1879</birthday>";
+        txt += "<gender>Man</gender>";
+        txt += "</student>";
+        
+    </script>
+    <script>
+        var parser = new DOMParser();
+        var xmlDoc = parser.parseFromString(txt, "text/xml");
+        var id = xmlDoc.getElementsByTagName("id")[0].childNodes[0].nodeValue;
+        var name = xmlDoc.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+        var birthday = xmlDoc.getElementsByTagName("birthday")[0].childNodes[0].nodeValue;
+        var gender = xmlDoc.getElementsByTagName("gender")[0].childNodes[0].nodeValue;
+    </script>
+    <script>
+        function highlightRow(row) {
+            row.className = "highlighted";
+        }
+        
+        function unhighlightRow(row) {
+            row.className = "";
+        }
+
+        function loadData(td, data) {
+            td.innerHTML = data;
+        }
+    </script>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td colspan="2" bgcolor="lightgreen">Student Information</td>
+        </tr>
+        <tr id="studentInfo" onmouseover="highlightRow(this)" onmouseout="unhighlightRow(this)">
+            <td>Student ID:</td>
+            <td id="tdid"></td>
+        </tr>
+        <tr id="authorInfo" onmouseover="highlightRow(this)" onmouseout="unhighlightRow(this)">
+            <td>Author:</td>
+            <td id="tdname"></td>
+        </tr>
+        <tr id="yearInfo" onmouseover="highlightRow(this)" onmouseout="unhighlightRow(this)">
+            <td>Year:</td>
+            <td id="tdbirthday"></td>
+        </tr>
+        <tr id="genderInfo" onmouseover="highlightRow(this)" onmouseout="unhighlightRow(this)">
+            <td>Gender:</td>
+            <td id="tdgender"></td>
+        </tr>
+    </table>
+    <script>
+        // Load data into table cells using the function
+        loadData(document.getElementById("tdid"), id);
+        loadData(document.getElementById("tdname"), name);
+        loadData(document.getElementById("tdbirthday"), birthday);
+        loadData(document.getElementById("tdgender"), gender);
+    </script>
+</body>
+</html>

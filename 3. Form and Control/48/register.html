@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body bgcolor="lightblue">
+    <div style="text-align: center;">
+        <img src="ex48/images/Jackson.gif">
+    </div>
+    <h2 style="text-align: center;">Register From</h2>
+    <p style="text-align: center;">Resgiter your Jackson Electronics product here</p>
+    <form action="processlogin.html" method="post">
+        <table>
+            <tr>
+                <td style="width:150pt"><label for="firstname">First Name</label></td>
+                <td>
+                <input type="text" name="firstname" id="firstname"/>
+                </td>
+                <td><label for="lastname">Last Name</label></td>
+                <td>
+                <input type="text" name="lastname" id="lastname"/>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="address1">Address#1</label></td>
+                <td>
+                <input type="text" name="address1" id="address1"/>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="address1">Address#2</label></td>
+                <td>
+                <input type="text" name="address2" id="address2"/>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="city">City</label></td>
+                <td>
+                <input type="text" name="city" id="city"/>
+                </td>
+                <td><label for="state">State</label></td>
+                <td>
+                <input type="text" name="state" id="state"/>
+                </td>
+                <td><label for="zip">Zip</label></td>
+                <td>
+                <input type="text" name="zip" id="zip"/>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="country">Country</label></td>
+                <td>
+                <input type="text" name="zip" id="zip"/>
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <table>
+            <tr>
+                <td style="width: 150pt"><label for="product">Product</label></td>
+                <td>
+                    <select name="fruit">
+                        <option value="ScanMaster">ScanMaster</option>
+                        <option value="Guava"> Guava </option>
+                        <option value="Durian"> Durian </option>
+                        <option value="Pineapple "> Pineapple </option>
+                    </select>                        
+                </td>
+            </tr>
+            <tr>
+                <td><label for="datepurchased">Date Purchased</label></td>
+                <td>
+                <input type="text" name="datepurchased" id="datepurchased"/>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="serial">Serial #</label></td>
+                <td>
+                <input type="text" name="serial" id="serial"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Used for</td>
+                <td>
+                    <input type="radio" name="home" value="home" checked=“checked” /> Home <br />
+	                <input type="radio" name="business" value="home"  check=“checked”/> Business                
+                </td>
+                <td>
+                    <input type="radio" name="educationalinstitution" value="educationalinstitution" checked=“checked” /> Educational Institution <br />
+	                <input type="radio" name="other" value="other"  check=“checked”/> Other               
+                </td>
+            </tr>
+            <tr>
+                <td>System (check all that apply)</td>
+                <td>
+                    <input type="checkbox" name="home" value="home" checked=“checked” /> Home <br />
+	                <input type="checkbox" name="business" value="home"  check=“checked”/> Business                
+                </td>
+                <td>
+                    <input type="checkbox" name="educationalinstitution" value="educationalinstitution" checked=“checked” /> Educational Institution <br />
+	                <input type="checkbox" name="other" value="other"  check=“checked”/> Other               
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <table>
+            <tr>
+                <td style="width:150pt"><label for="comment">Comment?</label></td>
+                <td><textarea rows="5" cols="40" id="comment"></textarea></td>
+            </tr>
+            <tr style="text-align: center;">
+                <td>&nbsp</td>
+                <td colspan="2" style="text-align: center;">
+                    <input type="submit" value="Click to register" name="register" id="register">
+                    <input type="reset" value="Click to clear" name="reset" id="reset">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

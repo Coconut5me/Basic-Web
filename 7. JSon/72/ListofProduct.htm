@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+
+    <script>
+        var products = [
+            {
+                "ProductID": "p123",
+                "ProductName": "DELL Inspiron 14NR",
+                "Quantity": 100,
+                "UnitPrice": 150000
+            },
+            {
+                "ProductID": "p456",
+                "ProductName": "HP Inspiron 113",
+                "Quantity": 130,
+                "UnitPrice": 140000
+            }
+            // Add more products as needed
+        ];
+
+        function calculateTotalPrice(quantity, unitPrice) {
+            return quantity * unitPrice;
+        }
+
+        function populateTable() {
+            var tableBody = document.getElementById("productTableBody");
+
+            for (var i = 0; i < products.length; i++) {
+                var product = products[i];
+                var row = tableBody.insertRow();
+                var cellProductID = row.insertCell(0);
+                var cellProductName = row.insertCell(1);
+                var cellQuantity = row.insertCell(2);
+                var cellUnitPrice = row.insertCell(3);
+                var cellTotalPrice = row.insertCell(4);
+
+                cellProductID.innerHTML = '<span style="color: red;">' + product.ProductID + '</span>';
+                cellProductName.innerHTML = '<span style="color: red;">' + product.ProductName + '</span>';
+
+                cellUnitPrice.innerHTML = product.UnitPrice;
+
+                var totalPrice = calculateTotalPrice(product.Quantity, product.UnitPrice);
+                cellTotalPrice.innerHTML = totalPrice;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Product List</h1>
+    <table border="1" style="border-collapse: collapse;">
+        <thead>
+            <tr bgColor="yellow">
+                <th colspan="5">List of products</th>
+            </tr>
+            <tr bgColor="green" style="color: aliceblue;">
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody id="productTableBody">
+        </tbody>
+    </table>
+
+    <script>
+        // Gọi hàm populateTable khi trang đã tải
+        window.onload = function () {
+            populateTable();
+        };
+    </script>
+</body>
+
+</html>

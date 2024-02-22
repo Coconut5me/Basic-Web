@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .highlighted {
+            background-color: yellow;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .bggreen {
+            background-color: green;
+            color: aliceblue;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        var studentsXML = `
+            <students>
+                <student>
+                    <id>987456</id>
+                    <name>Marie Curie</name>
+                    <birthday>7/11/1867</birthday>
+                    <gender>Woman</gender>
+                </student>
+                <student>
+                    <id>987561</id>
+                    <name>Einstein</name>
+                    <birthday>14/3/1879</birthday>
+                    <gender>Man</gender>
+                </student>
+                <student>
+                    <id>985467</id>
+                    <name>Leó Szilárd</name>
+                    <birthday>11/2/1898</birthday>
+                    <gender>Man</gender>
+                </student>
+            </students>
+        `;
+
+        // Function to parse and display XML data in the table
+        function displayStudents() {
+            var parser = new DOMParser();
+            var xmlDoc = parser.parseFromString(studentsXML, "text/xml");
+            var students = xmlDoc.getElementsByTagName("student");
+            var tbody = document.querySelector("tbody");
+
+            for (var i = 0; i < students.length; i++) {
+                var student = students[i];
+                var id = student.querySelector("id").textContent;
+                var name = student.querySelector("name").textContent;
+                var birthday = student.querySelector("birthday").textContent;
+                var gender = student.querySelector("gender").textContent;
+
+                var row = document.createElement("tr");
+                row.setAttribute("data-detail-page", i + 1 + ".htm");
+
+                var idCell = document.createElement("td");
+                var nameCell = document.createElement("td");
+                var birthdayCell = document.createElement("td");
+                var genderCell = document.createElement("td");
+
+                idCell.textContent = id;
+                nameCell.textContent = name;
+                birthdayCell.textContent = birthday;
+                genderCell.textContent = gender;
+
+                row.appendChild(idCell);
+                row.appendChild(nameCell);
+                row.appendChild(birthdayCell);
+                row.appendChild(genderCell);
+
+                tbody.appendChild(row);
+
+                // Add mouseover and mouseout event listeners
+                row.addEventListener("mouseover", function () {
+                    this.style.backgroundColor = "yellow";
+                });
+
+                row.addEventListener("mouseout", function () {
+                    this.style.backgroundColor = "";
+                });
+            }
+        }
+
+        // Function to open a detail page when a row is clicked
+        function openDetailPage(detailPage) {
+            window.open(detailPage, '_blank');
+        }
+
+        // Function to add click event to table rows
+        function addRowClickEvent() {
+            var rows = document.querySelectorAll("table tbody tr");
+            var detailPages = ["Marie.htm", "Einstein.htm", "Leo.htm"]; // Tên trang chi tiết tương ứng
+
+            for (var i = 0; i < rows.length; i++) {
+                var detailPage = detailPages[i]; // Lấy tên trang chi tiết tương ứng
+                rows[i].setAttribute("data-detail-page", detailPage); // Thêm thuộc tính data-detail-page vào mỗi hàng
+
+                rows[i].addEventListener("click", function () {
+                    var detailPage = this.getAttribute("data-detail-page");
+                    openDetailPage(detailPage);
+                });
+            }
+        }
+
+        // Call the addRowClickEvent function when the page loads
+        window.onload = function () {
+            displayStudents();
+            addRowClickEvent();
+        };
+
+        // Function to sort the table
+        function sortTable(columnIndex) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.querySelector("table");
+            switching = true;
+            dir = "asc";
+
+            while (switching) {
+                switching = false;
+                rows = table.getElementsByTagName("tr");
+
+                for (i = 2; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+
+                    x = rows[i].getElementsByTagName("td")[columnIndex];
+                    y = rows[i + 1].getElementsByTagName("td")[columnIndex];
+
+                    if (dir == "asc") {
+                        if (x.textContent.toLowerCase() > y.textContent.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir == "desc") {
+                        if (x.textContent.toLowerCase() < y.textContent.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    switchcount++;
+                } else {
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+
+        // Call the functions when the page loads
+        window.onload = function () {
+            displayStudents();
+            addRowClickEvent();
+        };
+    </script>
+</head>
+
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th colspan="4" class="highlighted">List of Students</th>
+            </tr>
+            <tr class="bggreen">
+                <th onclick="sortTable(0)">Student ID</th>
+                <th onclick="sortTable(1)">Student Name</th>
+                <th onclick="sortTable(2)">Birthday</th>
+                <th onclick="sortTable(3)">Gender</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+
+</html>

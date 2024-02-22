@@ -1,0 +1,13 @@
+<html>
+	<head>
+		<title>Learn H tags</title>
+	<head>
+	<body>
+		<h1> Heading of H </h1>
+		<h2> Heading of H </h2>
+		<h3> Heading of H </h3>
+		<h4> Heading of H </h4>
+		<h5> Heading of H </h5>
+		<h6> Heading of H </h6>
+	</body>
+</html>

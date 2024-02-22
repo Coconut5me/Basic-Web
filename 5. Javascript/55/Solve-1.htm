@@ -1,0 +1,63 @@
+<html>
+    <head>
+        
+        <script type="text/javascript">
+            function giaiptb1(){
+                //alert("chien")
+                //alert(myform.c.value)
+                a=eval(myform.a.value)
+                b=eval(myform.b.value)
+                c=eval(myform.c.value)
+                ketqua=document.getElementById("result")
+                d= b*b-4*a*c
+                if(d>0)
+                {
+                    x1=(-b + Math.sqrt(d))/(2*a)
+                    x2=(-b - Math.sqrt(d))/(2*a)
+                    ketqua.innerHTML="x1 = "+x1+"; x2 = "+x2
+                }
+                else if(d==0)
+                {
+                    x=-b/(2*a)
+                    ketqua.innerHTML="x = "+x
+                }
+                else
+                {
+                    ketqua.innerHTML="No solution"
+                }    
+            }
+        </script>
+    </head>
+    <body>
+        <form name="myform">
+            <table border=1px style="width:300px; text-align: center;">
+                <tr style="background-color: rgb(112, 245, 200);">
+                    <td colspan="2">The quadratic equation</td>
+                </tr>
+                <tr>
+                    <td><label for="a">a: </label></td>
+                    <td><input type="number" id="a" name="a"></td>
+                </tr>
+                <tr>
+                    <td><label for="b">b: </label></td>
+                    <td><input type="number" id="b" name="b"></td>
+                </tr>
+                <tr>
+                    <td><label for="c">c: </label></td>
+                    <td><input type="number" id="c" name="c"></td>
+                </tr>
+                <tr>
+                    <td>Result: </td>
+                    <td id="result"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="button" value="Find soultion" onclick="giaiptb1()">
+                        <input type="reset" vlaue="clear" onclick='document.getElementById("result").innerHTML=""'>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

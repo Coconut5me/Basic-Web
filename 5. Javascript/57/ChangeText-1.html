@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    button {
+      background-color: orange;
+      color: aliceblue;
+      border-color: rgb(196, 127, 0);
+      width: 80px;
+      height: 30px;
+    }
+  </style>
+  <script>
+    function calculateTotal() {
+      qty1 = parseFloat(document.getElementById("qty1").value);
+      qty2 = parseFloat(document.getElementById("qty2").value);
+      qty3 = parseFloat(document.getElementById("qty3").value);
+
+      if (isNaN(qty1) || isNaN(qty2) || isNaN(qty3)) {
+        alert("Quantity must be a valid number!");
+        return;
+      }
+
+      if (qty1 < 0 || qty2 < 0 || qty3 < 0) {
+        alert("Can't caculate!");
+        return;
+      }
+
+
+      price1 = parseFloat(document.querySelector('.price').textContent.replace('$', ''));
+      price2 = parseFloat(document.querySelectorAll('.price')[1].textContent.replace('$', ''));
+      price3 = parseFloat(document.querySelectorAll('.price')[2].textContent.replace('$', ''));
+
+      total1 = qty1 * price1;
+      total2 = qty2 * price2;
+      total3 = qty3 * price3;
+
+      document.getElementById("total1").value = total1.toFixed(2);
+      document.getElementById("total2").value = total2.toFixed(2);
+      document.getElementById("total3").value = total3.toFixed(2);
+
+      total = total1 + total2 + total3;
+      document.getElementById("total").value = total.toFixed(2);
+    }
+  </script>
+</head>
+
+<body>
+  <form>
+    <table style="width:100%; text-align: center;">
+      <thead>
+        <tr>
+          <th>Part Number</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Qty</th>
+          <th>Item total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>C112</td>
+          <td>Mouse</td>
+          <td class="price">$19.95</td>
+          <td><input type="text" id="qty1"></td>
+          <td><input type="text" id="total1" disabled></td>
+        </tr>
+        <tr>
+          <td>B124</td>
+          <td>Keyboard US</td>
+          <td class="price">$29.95</td>
+          <td><input type="text" id="qty2"></td>
+          <td><input type="text" id="total2" disabled></td>
+        </tr>
+        <tr>
+          <td>U125</td>
+          <td>USB KingMax</td>
+          <td class="price">$15.95</td>
+          <td><input type="text" id="qty3"></td>
+          <td><input type="text" id="total3" disabled></td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+    <div style="width: 100%; text-align: right;">
+      <p>
+        Total: <input id="total" disabled>
+      </p>
+      <p>
+        <button type="button" onclick="calculateTotal()">Sum</button>
+      </p>
+    </div>
+  </form>
+</body>
+
+</html>

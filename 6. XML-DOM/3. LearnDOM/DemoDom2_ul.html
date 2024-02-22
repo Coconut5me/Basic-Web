@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        menu1 = {
+            CateName: "Coffee",
+            Products: ["Black Coffee", "Milk Coffee", "Any Coffee"]
+        }
+    </script>
+    <script>
+        function drawMenu() 
+        {
+            div=document.getElementById("myMenu")
+            ul=document.createElement("ul")
+            div.appendChild(ul)
+            for(i=0;i<menu1.Products.length;i++)
+            {
+                p=menu1.Products[i]
+                li=document.createElement("li")
+                li.innerHTML=p
+                ul.appendChild(li)
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="myMenu">
+
+    </div>
+    <script>
+        drawMenu()
+    </script>
+</body>
+
+</html>

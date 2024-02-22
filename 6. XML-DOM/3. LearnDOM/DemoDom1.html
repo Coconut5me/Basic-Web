@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function processChangeAttribute() {
+            listOfp=document.getElementsByTagName("p")
+            for(i=0;i<listOfp.length;i++)
+            {
+                p=listOfp[i]
+                p.setAttribute("title","This is tooltip" + i)
+                p.setAttribute("style","font-size: 25px;color:red")
+            }
+            pLast=listOfp[listOfp.length-1]
+            alert(pLast.getAttribute("myVAr"))
+        }
+            </script>
+</head>
+<body>
+    <p style="font-size: 15px">Obama</p>
+    <p style="font-size: 15px">Putin</p>
+    <p style="font-size: 15px">Kim Jung Un</p>
+    <p myVar="I am Teo!">Teo Teo</p>
+    <input value="Change Attribute" type="button"
+    onclick="processChangeAttribute()"
+</body>
+</html>

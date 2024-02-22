@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function applyColors() {
+            const bgRed = document.getElementById("bgRed").value;
+            const bgGreen = document.getElementById("bgGreen").value;
+            const bgBlue = document.getElementById("bgBlue").value;
+            const textRed = document.getElementById("textRed").value;
+            const textGreen = document.getElementById("textGreen").value;
+            const textBlue = document.getElementById("textBlue").value;
+            
+            const hamletText = document.getElementById("hamletText");
+
+            const bgColor = `#${bgRed}${bgGreen}${bgBlue}`;
+            const textColor = `#${textRed}${textGreen}${textBlue}`;
+
+            hamletText.style.backgroundColor = bgColor;
+            hamletText.style.color = textColor;
+        }
+    </script>
+</head>
+<body>
+    <h1>A Simple Color Picker</h1>
+    <form>
+        <table>
+            <tr>
+                <td>
+                    Background (enter values from '00' to 'FF')
+                    <br>RED: <input type="text" id="bgRed"> GREEN: <input type="text" id="bgGreen"> BLUE: <input type="text" id="bgBlue"> 
+                    <br>Text (enter values from '00' to 'FF')
+                    <br>RED: <input type="text" id="textRed"> GREEN: <input type="text" id="textGreen"> BLUE: <input type="text" id="textBlue"> 
+                    <br>
+                    <button type="button" id="apply" onclick="applyColors()">Apply</button>
+                    <input type="reset" id="reload">Reload
+                </td>
+                <td>
+                   <h4>HAMLET:</h4> 
+                    <p id="hamletText">Speak the speech, I pray you, as I pronounced it to you, trippingly on the tongue: but if you mouth it, as many of your players do, I had as lief the town-crier spoke my lines</p>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

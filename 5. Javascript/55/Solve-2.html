@@ -1,0 +1,38 @@
+<html>
+    <head>
+        
+        <script src="Solve.js"></script>
+    </head>
+    <body>
+        <form name="myform">
+            <table border=1px style="width:300px; text-align: center;">
+                <tr style="background-color: rgb(112, 245, 200);">
+                    <td colspan="2">The quadratic equation</td>
+                </tr>
+                <tr>
+                    <td><label for="a">a: </label></td>
+                    <td><input type="number" id="a" name="a"></td>
+                </tr>
+                <tr>
+                    <td><label for="b">b: </label></td>
+                    <td><input type="number" id="b" name="b"></td>
+                </tr>
+                <tr>
+                    <td><label for="c">c: </label></td>
+                    <td><input type="number" id="c" name="c"></td>
+                </tr>
+                <tr>
+                    <td>Result: </td>
+                    <td id="result"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="button" value="Find soultion" onclick="giaiptb1()">
+                        <input type="reset" vlaue="clear" onclick='document.getElementById("result").innerHTML=""'>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

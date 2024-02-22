@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Processing</title>
+    <script>
+        function enterData() {
+            var inputData = document.getElementById("inputData").value;
+            var result = document.getElementById("result");
+            result.innerHTML = inputData;
+        }
+
+        function countUppercase() {
+            var inputData = document.getElementById("inputData").value;
+            var count = 0;
+            for (var i = 0; i < inputData.length; i++) {
+                if (/[A-Z]/.test(inputData[i])) {
+                    count++;
+                }
+            }
+            var result = document.getElementById("result");
+            result.innerHTML = "Number of uppercase characters: " + count;
+        }
+
+        function uppercaseDisplay() {
+            var inputData = document.getElementById("inputData").value;
+            var result = document.getElementById("result");
+            result.innerHTML = inputData.toUpperCase();
+        }
+
+        function oneWordPerLine() {
+            var inputData = document.getElementById("inputData").value;
+            var result = document.getElementById("result");
+            var words = inputData.split(/\s+/);
+            result.innerHTML = words.join("\n");
+        }
+
+        function wordCount() {
+            var inputData = document.getElementById("inputData").value;
+            var result = document.getElementById("result");
+            var words = inputData.split(/\s+/);
+            result.innerHTML = "Number of words: " + words.length;
+        }
+
+        function countLower() {
+            var inputData = document.getElementById("inputData").value;
+            var count = 0;
+            for (var i = 0; i < inputData.length; i++) {
+                if (/[a-z]/.test(inputData[i])) {
+                    count++;
+                }
+            }
+            var result = document.getElementById("result");
+            result.innerHTML = "Number of lowercase characters: " + count;
+        }
+
+        function printVowelsConsonants() {
+            var inputData = document.getElementById("inputData").value;
+            var vowels = "";
+            var consonants = "";
+            for (var i = 0; i < inputData.length; i++) {
+                var char = inputData[i].toLowerCase();
+                if (/[aeiou]/.test(char)) {
+                    vowels += inputData[i];
+                } else if (/[a-z]/.test(char)) {
+                    consonants += inputData[i];
+                }
+            }
+            var result = document.getElementById("result");
+            result.innerHTML = "Vowels: " + vowels + "\nConsonants: " + consonants;
+        }
+
+    </script>
+</head>
+<body>
+    <h3>Using String Process functions</h3>
+    <form>
+        <table>
+            <tr>
+                <td>
+                    <fieldset>
+                        <legend><h3>Input Data:</h3></legend>
+                        <textarea id="inputData" cols="30" rows="5"></textarea>
+                    </fieldset>
+                </td>
+                <td>
+                    <fieldset>
+                        <legend><h3>Result:</h3></legend>
+                        <textarea id="result" cols="30" rows="5"></textarea>
+                    </fieldset>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="button" id="enterDate" value="Enter Data" style="width: 100%;"></td>
+                <td><button type="button" id="countUppercase" style="width: 100%;" onclick="countUppercase()">Count the number of uppercase characters</button></td>
+            </tr>
+            <tr>
+                <td><button type="button" id="uppercaseDisplay" style="width: 100%;" onclick="uppercaseDisplay()">Uppercase display</button></td>
+                <td><button type="button" id="oneWordPerLine" style="width: 100%;" onclick="oneWordPerLine()">Output one word per line</button></td>
+            </tr>
+            <tr>
+                <td><button type="button" id="wordCount" style="width: 100%;" onclick="wordCount()">Word count</button></td>
+                <td><button type="button" id="countLower" style="width: 100%;" onclick="countLower()">Count the number of lowercase characters</button></td>
+            </tr>
+            <tr>
+                <td><button type="button" id="print" style="width: 100%;" onclick="printVowelsConsonants()">Print vowels; consonants</button></td>
+                <td>
+                    <button type="button" id="stringProcessing" style="width: 100%;" 
+                            onclick="window.location.href='https://example.com'">W3C's String Processing Website</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

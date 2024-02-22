@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var student={
+            StudentId:"K2141123",
+            FirstName:"Teo",
+            MiddleName:"Van",
+            LastName:"Nguyen",
+            Birthday:"2003/1/1",
+            getFullName: function()
+            {
+                s=this.LastName.concat(" ")
+                    .concat(this.MiddleName).concat(" ")
+                    .concat(this.FirstName)
+                    return s
+            },
+            getAge:function()
+            {
+                //step 1: convert this.Birthday to Date object
+                dateOfBirthday=Date.parse(this.Birthday)
+                //step 2: get difference between now and dateOfBirthday
+                //substract -> return milliceconds
+                diffMil=Date.now()-dateOfBirthday
+                //step 3: convert diffMill to Date
+                dateOfBirthday=new Date(diffMil)
+                //Date return 1970 with milliseconds
+                //cuz Y2K problem
+                age=Math.abs(dateOfBirthday.getUTCFullYear()-1970)
+                return age
+            }
+        }
+    </script>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td>Student Id:</td>
+            <td>
+                <script>
+                    document.writeln(student.StudentId)
+                </script>
+            </td>
+        </tr>
+        <tr>
+            <td>Student First Name:</td>
+            <td>
+                <script>
+                    document.writeln(student.FirstName)
+                </script>
+            </td>
+        </tr>
+        <tr>
+            <td>Student Middle Name:</td>
+            <td>
+                <script>
+                    document.writeln(student.MiddleName)
+                </script>
+            </td>
+        </tr>
+        <tr>
+            <td>Student Last Name:</td>
+            <td>
+                <script>
+                    document.writeln(student.LastName)
+                </script>
+            </td>
+        </tr>
+        <tr>
+            <td>Student Full Name</td>
+            <td>
+                <script>
+                    document.writeln(student.getFullName())
+                </script>
+            </td>
+        </tr>
+        <tr>
+            <td>Age:</td>
+            <td>
+                <script>
+                    document.writeln(student.getAge())
+                </script>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

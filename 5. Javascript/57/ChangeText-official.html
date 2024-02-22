@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function updateRowTotal(qtyInput, totalInput, priceCell) {
+            var qty = parseFloat(qtyInput.value);
+            if (qty < 0) {
+                alert("Quantity cannot be negative!");
+                return;
+            }
+            var price = parseFloat(priceCell.textContent.replace('$', ''));
+            var rowTotal = qty * price;
+            totalInput.value = rowTotal.toFixed(2);
+        }
+
+        function countTotal() {
+            var total1 = parseFloat(document.getElementById("total1").value) || 0;
+            var total2 = parseFloat(document.getElementById("total2").value) || 0;
+            var total3 = parseFloat(document.getElementById("total3").value) || 0;
+
+            var grandTotal = total1 + total2 + total3;
+
+            document.getElementById("total").value = grandTotal.toFixed(2);
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        <table style="width:100%; text-align: center;">
+            <thead>
+                <tr>
+                    <th>Part Number</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Item total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>C112</td>
+                    <td>Mouse</td>
+                    <td class="price">$19.95</td>
+                    <td>
+                        <input type="number" id="qty1"
+                            oninput="updateRowTotal(this, total1, document.querySelectorAll('.price')[0])">
+                    </td>
+                    <td>
+                        <input type="text" id="total1" disabled>
+                    </td>
+                </tr>
+                <tr>
+                    <td>B124</td>
+                    <td>Keyboard US</td>
+                    <td class="price">$29.95</td>
+                    <td>
+                        <input type="number" id="qty2"
+                            oninput="updateRowTotal(this, total2, document.querySelectorAll('.price')[1])">
+                    </td>
+                    <td>
+                        <input type="text" id="total2" disabled>
+                    </td>
+                </tr>
+                <tr>
+                    <td>U125</td>
+                    <td>USB KingMax</td>
+                    <td class="price">$15.95</td>
+                    <td>
+                        <input type="number" id="qty3"
+                            oninput="updateRowTotal(this, total3, document.querySelectorAll('.price')[2])">
+                    </td>
+                    <td>
+                        <input type="text" id="total3" disabled>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <div style="width: 100%; text-align: right;">
+            <p>
+                Total:
+                <input id="total" disabled>
+            </p>
+            <p>
+                <input type="button" value="Sum" onclick="countTotal()">
+            </p>
+        </div>
+    </form>
+</body>
+
+</html>

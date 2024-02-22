@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(22, 22, 119);
+        }
+
+        h1 {
+            color: aliceblue;
+            text-align: center;
+        }
+
+        td {
+            color: aliceblue;
+        }
+    </style>
+    <script>
+        function currentDate() {
+            var currentDate = new Date();
+            var day = currentDate.getDate();
+            var month = currentDate.getMonth() + 1; // Tháng bắt đầu từ 0, nên cộng thêm 1
+            var year = currentDate.getFullYear();
+            var formattedDate = day + '/' + month + '/' + year;
+            document.getElementById("today").value = formattedDate;
+        }
+
+        function enterName() {
+            var physician = document.getElementById("physician").value;
+            if (physician === "Other") {
+                var other = prompt("Please enter Name:");
+                if (other !== null) {
+                    document.getElementById("other").value = other;
+                }
+            }
+        }
+
+        function validateInput(input) {
+            var value = parseFloat(input.value);
+            if (isNaN(value) || value < 0 || value > 2) {
+                alert("Please enter a value between 0 and 2.");
+                input.value = 0;
+            }
+            updateTotal();
+        }
+
+        function updateTotal() {
+            var activity = parseFloat(document.getElementById("Activity").value);
+            var pulse = parseFloat(document.getElementById("Pulse").value);
+            var grimace = parseFloat(document.getElementById("Grimace").value);
+            var appearance = parseFloat(document.getElementById("Appearance").value);
+            var respiration = parseFloat(document.getElementById("Respiration").value);
+
+            var total = activity + pulse + grimace + appearance + respiration;
+            document.getElementById("Total").value = total;
+        }
+    </script>
+</head>
+
+<body onload="currentDate()">
+    <div style="text-align: center;">
+        <img src="ex58/Logo.gif" />
+    </div>
+    <h1>Neonatal Feeding Study</h1>
+    <form>
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Today is:
+                    <input id="today" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 200px;">1) Name (first, last):</td>
+                <td><input type="text" id="Firstname"></td>
+                <td><input type="text" id="Lastname"></td>
+            </tr>
+            <tr>
+                <td>2) Medical Record #:</td>
+                <td><input type=type id="medicalREcord"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3) Date of birth:</td>
+                <td><input type="date" id="dob"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4) Physician:</td>
+                <td>
+                    <select name="physician" id="physician" onchange="enterName()">
+                        <option value="Warren">Dr. Warren Albert</option>
+                        <option value="Guava">Guava</option>
+                        <option value="Durian">Durian</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>&nbsp &nbsp If other (specify):</td>
+                <td><input type="text" id="other"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td rowspan="6" style="vertical-align: top;">
+                    5) 1 minute APGAR Score:
+                    <br>Each score must be 0, 1, or 2
+                </td>
+                <td>Activity</td>
+                <td><input type="number" min="0" max="2" step="1" value="0" id="Activity" oninput="validateInput(this)">
+                </td>
+            </tr>
+            <tr>
+                <td>Pulse</td>
+                <td><input type="number" min="0" max="2" step="1" value="0" id="Pulse" oninput="validateInput(this)">
+                </td>
+            </tr>
+            <tr>
+                <td>Grimace (Reflex, Irritability)</td>
+                <td><input type="number" min="0" max="2" step="1" value="0" id="Grimace" oninput="validateInput(this)">
+                </td>
+            </tr>
+            <tr>
+                <td>Appearance (Skin Color)</td>
+                <td><input type="number" min="0" max="2" step="1" value="0" id="Appearance"
+                        oninput="validateInput(this)"></td>
+            </tr>
+            <tr>
+                <td>Respiration</td>
+                <td><input type="number" min="0" max="2" step="1" value="0" id="Respiration"
+                        oninput="validateInput(this)"></td>
+            </tr>
+            <tr>
+                <td><b>TOTAL</b></td>
+                <td><input type="number" min="0" max="10" step="1" value="0" id="Total" disabled></td>
+            </tr>
+            <tr>
+                <td>6) Birth weight (gms):
+                    <br>Weights must be &gt;= 1200 gms.
+                </td>
+                <td><input type="number"></td>
+            </tr>
+        </table>
+        <center>
+            <button type="submit" id="register">Register
+            <button type="reset" id="reset"> Reload Page
+        </center>
+    </form>
+</body>
+
+</html>

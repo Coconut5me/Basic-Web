@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Registration</title>
+    <style type="text/css">
+        body {
+            font-family: arial;
+        }
+        .whitetext {
+            height: 30px;
+            color: aliceblue;
+            font-weight: bold;
+        }
+        thead {
+            background-color: rgb(56, 56, 119);
+            color: aliceblue;
+        }
+        tbody tr:nth-child(odd) {
+            background-color: rgb(255, 255, 227);
+        }
+        tbody tr:nth-child(even) {
+            background-color: white;
+        }
+        tfoot {
+            background-color: rgb(34, 34, 119);
+            color: aliceblue;
+        }
+    </style>
+    <script>
+        debugger;
+        function createSelect(id, from, to) {
+            var select = document.getElementById(id);
+            for (var i = from; i <= to; i++) {
+                var option = document.createElement("option");
+                option.value = i;
+                option.innerText = i;
+                select.appendChild(option);
+            }
+        }
+
+        function getSelectedOptions(name) {
+            const options = document.getElementsByName(name);
+            const selectedOptions = Array.from(options)
+                .filter(option => option.checked)
+                .map(option => option.value);
+            return selectedOptions.join(", ");
+        }
+    </script>
+      <script>
+        function populateDateDropdowns() {
+            createSelect("selectday", 1, 31);
+            createSelect("selectmonth", 1, 12);
+            const currentYear = new Date().getFullYear();
+            createSelect("selectyear", 1900, currentYear);
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function addRowMouseEvents() {
+            const tableRows = document.getElementById("infoTable").getElementsByTagName("tr");
+            for (let i = 1; i < tableRows.length; i++) {
+                tableRows[i].addEventListener("mouseover", function () {
+                    this.style.backgroundColor = "yellow";
+                });
+                tableRows[i].addEventListener("mouseout", function () {
+                    this.style.backgroundColor = i % 2 === 0 ? "white" : "rgb(255, 255, 227)";
+                });
+            }
+        }
+
+        document.getElementById("registrationForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const name = document.getElementsByName("name")[0].value;
+            const email = document.getElementsByName("email")[0].value;
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            const day = document.getElementById("selectday").value;
+            const month = document.getElementById("selectmonth").value;
+            const year = document.getElementById("selectyear").value;
+            const hobbies = getSelectedOptions("favorite");
+            const color = document.querySelector('input[name="color"]:checked').value;
+
+            if (name === "") {
+                alert("Name cannot be left blank.");
+                return;
+            }
+
+            if (!isValidEmail(email)) {
+                alert("Email must be valid.");
+                return;
+            }
+
+            const table = document.getElementById("infoTable");
+            const newRow = table.insertRow(-1);
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+            const cell3 = newRow.insertCell(2);
+            const cell4 = newRow.insertCell(3);
+            const cell5 = newRow.insertCell(4);
+            const cell6 = newRow.insertCell(5);
+
+            cell1.innerHTML = name;
+            cell2.innerHTML = email;
+            cell3.innerHTML = gender;
+            cell4.innerHTML = `${day}/${month}/${year}`;
+            cell5.innerHTML = hobbies;
+            cell6.innerHTML = color;
+
+            document.getElementById("registrationForm").reset();
+
+            addRowMouseEvents();
+        });
+
+        document.getElementById("next").addEventListener("click", function () {
+            document.getElementsByName("name")[0].value = "";
+            document.getElementsByName("name")[0].focus();
+        });
+
+        populateDateDropdowns();
+    </script>
+</head>
+<body>
+    <h1>Member Register</h1>
+    <hr>
+    <form id="registrationForm">
+        <p>
+            Name(*) <input type="text" name="name">
+            <br>Birthday(*)
+            Day: <select id="selectday"></select>
+            Month: <select id="selectmonth"></select>
+            Year: <select id="selectyear"></select>
+            <br>Gender(*)
+            <input type="radio" name="gender" value="male" checked="checked" /> Male
+            <input type="radio" name="gender" value="female" /> Female
+            <br>Email(*) <input type="email" name="email">
+        </p>
+        <p>
+            Your favorite:
+            <br>&nbsp &nbsp<input type="checkbox" name="favorite" value="shopping">Shopping
+            <br>&nbsp &nbsp<input type="checkbox" name="favorite" value="tourism">Tourism
+            <br>&nbsp &nbsp<input type="checkbox" name="favorite" value="chat">Chat
+            <br>&nbsp &nbsp<input type="checkbox" name="favorite" value="read">Read a book
+            <br>&nbsp &nbsp<input type="checkbox" name="favorite" value="music">Listening to music
+
+            <br>Your favorite color:
+            <br><span style="background-color: blue;"><input type="radio" name="color" value="blue" checked="checked" /> Blue</span>
+            <br><span style="background-color: red;"><input type="radio" name="color" value="red" /> Red</span>
+            <br><span style="background-color: yellow;"><input type="radio" name="color" value="yellow" /> Yellow</span>
+            <br><span style="background-color: green;"><input type="radio" name="color" value="green" /> Green</span>
+            <br><span style="background-color: violet;"><input type="radio" name="color" value="violet" /> Violet</span>
+        </p>
+        <p>
+            <input type="submit" id="signup" value="Sign up">
+            <input type="reset" id="reset" value="Reset">
+            <input type="button" id="next" value="Next">
+        </p>
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Birthday</th>
+                <th>Hobbies</th>
+                <th>Colors</th>
+            </tr>
+        </thead>
+        <tbody id="infoTable"></tbody>
+    </table>
+</body>
+</html>

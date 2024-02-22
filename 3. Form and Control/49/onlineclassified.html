@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bold{
+            font-weight: bold;
+        }
+        button{
+            background-color: transparent;
+            border:0
+        }
+    </style>
+</head>
+<body bgcolor="aqua">
+    <h2 style="color:red">Online Classifieds Search Form</h2>
+    <hr>
+    <form action="https://www.topcv.vn/quan-ly-cv" method="get">
+        <p class="bold">1) Search for a classified in the following sections</p>
+        <table>
+            <tr>
+                <td>
+                    <input type="radio" value="Employment" name="career">Employment
+                </td>
+                <td>
+                    <input type="radio" value="Personal" name="career">Personal
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" value="ForSale" name="career">For Sale
+                </td>
+                <td>
+                    <input type="radio" value="Miscellanecus" name="career" >Miscellanecus
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" value="Housing" name="career">Housing
+                </td>
+                <td>
+                    <input type="radio" value="All" name="career"">All of the abouve
+                </td>
+            </tr>
+        </table>
+        <p class="bold">2) Search the following publications</p>
+        <table>
+            <tr>
+                <td>
+                    <input type="checkbox" value="Midwest" name="publications" id="Midwest">Midwest times
+                </td>
+                <td>
+                    <input type="checkbox" value="Modern" name="publications" id="Modern">Modern News
+                </td>
+                <td>
+                    <input type="checkbox" value="Employemnttoday" name="publications" id="Employemnttoday">Employemnt Today
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" value="Great" name="publications" id="Great">Great Lakes Classifieds
+                </td>
+                <td>
+                    <input type="checkbox" value="Middleton" name="publications" id="Middleton">Middleton Daily
+                </td>
+                <td>
+                    <input type="checkbox" value="Cashtown" name="publications" id="Cashtown">Cashtown Daily News
+                </td>
+            </tr>
+        </table>
+        <p class="bold">3) From
+            <input type="date" value="from" name="from" id="from">to
+            <input type="date" value="to" name="to" id="to">
+        </p>
+        <p class="bold"><label for="text">4) Enter a few keywords to describe the classified</label>
+        </p>
+        <textarea rows="1" cols="100%" id="text"></textarea>
+        <p class="bold">5) Click one of the option below</p>
+
+        <button type="submit">
+            <img src="ex49/Search.gif"/>
+        </button>
+        <button type="button" onclick=javascript:window.location.href='https://en.wikipedia.org/wiki/Policy>
+            <img src="ex49/Help.gif"/>
+        </button>
+        <button type="reset">
+            <img src="ex49/Cancel.gif"/>
+        </button>
+    </form> 
+</body>
+</html>

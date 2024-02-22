@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .menu {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            margin: 0;
+        }
+
+        .menu-item {
+
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+            
+        }
+
+        .sub-menu {
+            list-style: none;
+            padding: 0;
+            display: none;
+            position: absolute;
+        }
+
+        .sub-menu-item {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid green;
+            color: black;
+        }
+
+        .menu-item:hover {
+            background-color: orange;
+        }
+
+        .menu-item:hover .sub-menu {
+            display: list-item;
+        }
+
+    </style>
+</head>
+<body>
+    <b>
+        <ul class="menu">
+            <li class="menu-item">HOME
+            </li>
+            <li class="menu-item">HTML
+            </li>
+            <li class="menu-item">CSS
+                <ul class="sub-menu">
+                    <li class="sub-menu-item">Basic CSS</li>
+                    <li class="sub-menu-item">Graphic User Interface with CSS</li>
+                    <li class="sub-menu-item">Advanced CSS</li>
+                </ul>
+            </li>
+            <li class="menu-item">JAVASCRIPT
+                <ul class="sub-menu">
+                    <li class="sub-menu-item">LESSON 01</li>
+                    <li class="sub-menu-item">LESSON 02</li>
+                    <li class="sub-menu-item">LESSON 03</li>
+                </ul>
+            </li>
+            <li class="menu-item">HTML DOM</li>
+            <li class="menu-item">ASP MVC</li>
+        </ul>
+    </b>
+</body>
+</html>
